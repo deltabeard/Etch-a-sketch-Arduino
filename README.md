@@ -7,3 +7,9 @@ This Arduino program requires the Adafruit_GFX and the Adafruit_PCD_8544
 libraries installed in the libraries folder of the Arduino IDE which are 
 available from http://learn.adafruit.com/ under the BSD license 
 agreement.
+
+Current Status
+==============
+
+
+Development slow.
