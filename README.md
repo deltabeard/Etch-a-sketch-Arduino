@@ -23,6 +23,6 @@ Current Status
 ==============
 
 
-Program working.
-70% done. See todo for work yet to be done.
+Program working.<br>
+70% done. See todo for work yet to be done.<br>
 Development slow.
