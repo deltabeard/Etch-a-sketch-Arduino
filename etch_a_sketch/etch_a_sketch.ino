@@ -90,32 +90,22 @@ void usinganalog() {
   clearDisplay();
   x = 42;
   y = 24;
-  Serial.begin(9600);
   
   while(menu_item == 2) {
     xmove = constrain((map(analogRead(x_axis), 0, 672, 0, 255)), 0, 255);
     ymove = constrain((map(analogRead(y_axis), 0, 672, 0, 255)), 0, 255);
-    Serial.print(xmove);
-    Serial.print("\t");
-    Serial.println(ymove);
-  
-    if(xmove > 230 && ymove > 230) {         // Top Right
-      y = y - 1;
-      x = x + 1;
-    } else if(xmove < 35 && ymove > 230) {  // Top Left
-      y = y - 1;
-      x = x - 1;
-    } else if(xmove < 35 && ymove < 35) {  // Bottom Left
-      y = y + 1;
-      x = x - 1;
-    } else if(xmove > 230 && ymove < 35) {  // Bottom Right
-      y = y + 1;
-      x = x + 1;
-    } else if(200 < xmove < 256 && 100 < ymove < 150) {        // NOT WORKING 
-      x = x + 1;
+    
+    if (xmove < 125) {
+      x--;
+    } else if (130 < xmove) {
+      x++;
     }
-    
-    
+    if (ymove < 125) {
+      y++;
+    } else if (130 < ymove) {
+      y--;
+    }
+
     // draw a single pixel
     display.drawPixel(x, y, BLACK);
     display.display();
@@ -124,10 +114,8 @@ void usinganalog() {
     if(digitalRead(start_button) == 0) {
       menu_item = 0;
       mainmenu();
-    }
-    
+    } 
   }
-
 }
 
 
