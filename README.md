@@ -24,5 +24,5 @@ Current Status
 
 
 Program working.<br>
-70% done. See todo for work yet to be done.<br>
-Development slow.
+95% done. See todo for work yet to be done.<br>
+Development at good pace.

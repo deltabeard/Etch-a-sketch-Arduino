@@ -1,19 +1,21 @@
 /* 
-  deltabeard
-
+  Deltabeard - 2014
+  Released under the MIT License. See LICENSE for more information.
+  See README.md for information on how to use this program.
 */
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 
+// Below is the guide for normal Nokia 5110 LCDs.
 // pin 7 - Serial clock out (SCLK)
 // pin 6 - Serial data out (DIN)
 // pin 5 - Data/Command select (D/C)
 // pin 4 - LCD chip select (CS)
 // pin 3 - LCD reset (RST)
-Adafruit_PCD8544 display = Adafruit_PCD8544(13, 11, 7, 12, 10);
 
-// old: Adafruit_PCD8544 display = Adafruit_PCD8544(13, 11, 5, 7, 6);
+// Below is the command I had to use to initialise my Nokia 5110 LCD. It will probably be different for you.
+Adafruit_PCD8544 display = Adafruit_PCD8544(13, 11, 7, 12, 10);
 
 const byte up_button = 2;    // A
 const byte right_button = 3; // B
@@ -151,6 +153,7 @@ void usinganalogmapped() {
   while(menu_item == 1) {
     x = constrain((map(analogRead(x_axis), 0, 672, 0, 84)), 0, 83);
     y = constrain((map(analogRead(y_axis), 0, 672, 0, 48)), 0, 47);
+    
   // inversing y - because without this,
   // pushing the analog stick up moves the pixel down.
     y = 47 - y;  
