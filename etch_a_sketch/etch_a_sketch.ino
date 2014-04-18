@@ -34,11 +34,7 @@ byte ymove = 130;
 
 byte menu_item = 0;
 
-void setup() {
-  // put your setup code here, to run once:
-  
-  //Serial.begin(9600);
-  
+void setup() {  
   //Initialise the Joystick shield
   for (int i; i < 7; i++)
   {
@@ -121,25 +117,23 @@ void usinganalog() {
 
 void usingbuttons() {
   clearDisplay();
+  x = 42;
+  y = 24;
   delay(200);
   while(menu_item == 3) {
     if(digitalRead(up_button) == 0) {
-      y = y - 1;
-    } else if(digitalRead(down_button) == 0) {
-      y = y + 1;
-    } else if(digitalRead(right_button) == 0) {
-      x = x + 1;
-    } else if(digitalRead(left_button) == 0) {
-      x = x - 1;
+      y--;
     }
-    
+    if(digitalRead(down_button) == 0) {
+      y++;
+    }
+    if(digitalRead(right_button) == 0) {
+      x++;
+    }
+    if(digitalRead(left_button) == 0) {
+      x--;
+    }
   
-  //debugging tools
-  //Serial.print(x);
-  //Serial.print(" - ");
-  //Serial.println(y);
-  
-
   // draw a single pixel
     display.drawPixel(x, y, BLACK);
     display.display();
@@ -159,13 +153,7 @@ void usinganalogmapped() {
     y = constrain((map(analogRead(y_axis), 0, 672, 0, 48)), 0, 47);
   // inversing y - because without this,
   // pushing the analog stick up moves the pixel down.
-    y = 47 - y;
-  
-  //debugging tools
-  //Serial.print(x);
-  //Serial.print(" - ");
-  //Serial.println(y);
-  
+    y = 47 - y;  
 
   // draw a single pixel
     display.drawPixel(x, y, BLACK);
