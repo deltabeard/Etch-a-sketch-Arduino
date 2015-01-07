@@ -4,6 +4,7 @@
   See README.md for information on how to use this program.
 */
 
+#include <SPI.h> 
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 
@@ -17,6 +18,7 @@
 // Below is the command I had to use to initialise my Nokia 5110 LCD. It will probably be different for you.
 Adafruit_PCD8544 display = Adafruit_PCD8544(13, 11, 7, 12, 10);
 
+// Initialising variables for JoyStick Shield V1.A
 const byte up_button = 2;    // A
 const byte right_button = 3; // B
 const byte down_button = 4;  // C
@@ -28,6 +30,7 @@ byte x_axis = A0;
 byte y_axis = A1;
 byte buttons[] = {up_button, down_button, left_button, right_button, start_button, select_button, analog_button};
 
+// Resolution of LCD
 byte x = 24;
 byte y = 42;
 
@@ -65,7 +68,9 @@ void mainmenu() {
   display.setTextSize(1);
   display.setTextColor(BLACK);
   display.setCursor(0,0);
-  display.println("Control using:");
+  // not println because cursor goes to a new line anyway
+  // because the string the largest that can printed on one line.
+  display.print("Control using:");
   display.println("A:Analog 1:1");
   display.println("B:Analog");
   display.println("C:Digital");
