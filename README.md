@@ -25,4 +25,3 @@ Current Status
 
 Program working.<br>
 95% done. See todo for work yet to be done.<br>
-Development at good pace.
